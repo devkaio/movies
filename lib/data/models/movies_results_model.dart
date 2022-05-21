@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'movie_model.dart';
 
 class MoviesResultModel {
@@ -5,23 +7,23 @@ class MoviesResultModel {
 
   MoviesResultModel({this.movies});
 
-  factory MoviesResultModel.fromJson(Map<String, dynamic> json) {
-    final tempMovies = <MovieModel>[];
-
-    if (json['results'] != null) {
-      json['results'].forEach((v) {
-        tempMovies.add(MovieModel.fromJson(v));
-      });
-    }
-
-    return MoviesResultModel(movies: tempMovies);
+  Map<String, dynamic> toMap() {
+    return {
+      'results': movies?.map((x) => x.toMap()).toList(),
+    };
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (movies != null) {
-      data['results'] = movies!.map((v) => v.toJson()).toList();
-    }
-    return data;
+  factory MoviesResultModel.fromMap(Map<String, dynamic> map) {
+    return MoviesResultModel(
+      movies: map['results'] != null
+          ? List<MovieModel>.from(
+              map['results']?.map((x) => MovieModel.fromMap(x)))
+          : null,
+    );
   }
+
+  String toJson() => json.encode(toMap());
+
+  factory MoviesResultModel.fromJson(String source) =>
+      MoviesResultModel.fromMap(json.decode(source));
 }
