@@ -34,40 +34,40 @@ class MovieModel extends MovieEntity {
   Map<String, dynamic> toMap() {
     return {
       'overview': overview,
-      'releaseDate': releaseDate,
+      'release_date': releaseDate,
       'title': title,
       'adult': adult,
-      'backdropPath': backdropPath,
-      'genreIds': genreIds,
-      'originalLanguage': originalLanguage,
-      'originalTitle': originalTitle,
+      'backdrop_path': backdropPath,
+      'genre_ids': genreIds,
+      'original_language': originalLanguage,
+      'original_title': originalTitle,
       'id': id,
-      'voteCount': voteCount,
+      'vote_count': voteCount,
       'video': video,
-      'voteAverage': voteAverage,
-      'posterPath': posterPath,
+      'vote_average': voteAverage,
+      'poster_path': posterPath,
       'popularity': popularity,
-      'mediaType': mediaType,
+      'media_type': mediaType,
     };
   }
 
   factory MovieModel.fromMap(Map<String, dynamic> map) {
     return MovieModel(
       overview: map['overview'],
-      releaseDate: map['releaseDate'] ?? '',
+      releaseDate: map['release_date'] ?? '',
       title: map['title'] ?? '',
       adult: map['adult'],
-      backdropPath: map['backdropPath'] ?? '',
-      genreIds: List<int>.from(map['genreIds']),
-      originalLanguage: map['originalLanguage'],
-      originalTitle: map['originalTitle'],
+      backdropPath: map['backdrop_path'] ?? '',
+      genreIds: List<int>.from(map['genre_ids']),
+      originalLanguage: map['original_language'],
+      originalTitle: map['original_title'],
       id: map['id']?.toInt() ?? 0,
-      voteCount: map['voteCount']?.toInt(),
+      voteCount: map['vote_count']?.toInt(),
       video: map['video'],
-      voteAverage: map['voteAverage']?.toDouble() ?? 0.0,
-      posterPath: map['posterPath'],
+      voteAverage: map['vote_average']?.toDouble() ?? 0.0,
+      posterPath: map['poster_path'],
       popularity: map['popularity']?.toDouble(),
-      mediaType: map['mediaType'],
+      mediaType: map['media_type'],
     );
   }
 
