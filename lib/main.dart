@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:movies/di/get_it.dart' as get_it;
 
-import 'data/core/api_client.dart';
-import 'data/data_sources/movie_remote_data_source.dart';
-import 'data/repositories/movie_repository_impl.dart';
 import 'domain/entities/no_params.dart';
-import 'domain/repositories/movie_repository.dart';
 import 'domain/usecases/get_trending.dart';
 
 void main() async {
-  ApiClient apiClient = ApiClient(Client());
-  MovieRemoteDataSource dataSource = MovieRemoteDataSourceImpl(apiClient);
-  MovieRepository movieRepository = MovieRepositoryImpl(dataSource);
-  GetTrending getTrending = GetTrending(movieRepository);
+  WidgetsFlutterBinding.ensureInitialized();
+  await get_it.init();
+
+  GetTrending getTrending = get_it.getItInstance<GetTrending>();
+
   final response = await getTrending(NoParams());
   response.fold(
     (l) {
