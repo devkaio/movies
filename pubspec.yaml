@@ -38,6 +38,9 @@ dependencies:
   equatable: ^2.0.3
   dartz: ^0.10.1
   get_it: ^7.2.0
+  cached_network_image: ^3.2.1
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:
