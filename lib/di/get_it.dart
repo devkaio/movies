@@ -14,7 +14,7 @@ import '../presentation/blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
 
 final getItInstance = GetIt.I;
 
-Future init() async {
+Future<void> init() async {
   getItInstance.registerLazySingleton<Client>(() => Client());
 
   getItInstance
