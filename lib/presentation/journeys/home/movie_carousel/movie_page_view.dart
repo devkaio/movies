@@ -54,7 +54,7 @@ class _MoviePageViewState extends State<MoviePageView> {
             index: index,
             pageController: _pageController,
             movieId: movie.id,
-            posterPath: movie.backdropPath,
+            posterPath: movie.posterPath,
           );
         },
         pageSnapping: true,

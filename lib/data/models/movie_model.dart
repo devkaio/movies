@@ -9,7 +9,7 @@ class MovieModel extends MovieEntity {
   final String? originalTitle;
   final int? voteCount;
   final bool? video;
-  final String? posterPath;
+  @override
   final double? popularity;
   final String? mediaType;
 
@@ -26,7 +26,7 @@ class MovieModel extends MovieEntity {
     this.voteCount,
     this.video,
     required super.voteAverage,
-    this.posterPath,
+    required super.posterPath,
     this.popularity,
     this.mediaType,
   });
