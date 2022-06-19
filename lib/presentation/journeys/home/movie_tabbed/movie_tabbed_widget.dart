@@ -29,7 +29,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget>
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    movieTabbedBloc.close();
     super.dispose();
   }
 
