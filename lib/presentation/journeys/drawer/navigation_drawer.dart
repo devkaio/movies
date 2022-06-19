@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/common/constants/languages.dart';
 import 'package:movies/common/constants/size_constants.dart';
 import 'package:movies/common/extensions/size_extensions.dart';
+import 'package:movies/common/extensions/string_extensions.dart';
+import 'package:movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:movies/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:movies/presentation/widgets/logo.dart';
+
+import '../../../common/constants/translation_constants.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -34,20 +40,23 @@ class NavigationDrawer extends StatelessWidget {
             child: Logo(height: Sizes.dimen_25.h),
           ),
           NavigationListItem(
-            title: "Favorite Movies",
+            title: TranslationConstants.favoriteMovie.t(context),
             onPressed: () {},
           ),
           NavigationExpandedListItem(
-            title: "Language",
-            children: const ["English", "Portuguese"],
+            title: TranslationConstants.language.t(context),
+            children: Languages.languages.map((e) => e.value).toList(),
+            onPressed: (index) {
+              BlocProvider.of<LanguageBloc>(context)
+                  .add(ToggleLanguageEvent(Languages.languages[index]));
+            },
+          ),
+          NavigationListItem(
+            title: TranslationConstants.feedback.t(context),
             onPressed: () {},
           ),
           NavigationListItem(
-            title: "Feedback",
-            onPressed: () {},
-          ),
-          NavigationListItem(
-            title: "About",
+            title: TranslationConstants.about.t(context),
             onPressed: () {},
           ),
         ],
