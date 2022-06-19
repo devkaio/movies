@@ -9,7 +9,6 @@ class MovieModel extends MovieEntity {
   final String? originalTitle;
   final int? voteCount;
   final bool? video;
-  @override
   final double? popularity;
   final String? mediaType;
 
