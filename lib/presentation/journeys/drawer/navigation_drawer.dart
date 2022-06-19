@@ -7,7 +7,9 @@ import 'package:movies/common/extensions/string_extensions.dart';
 import 'package:movies/presentation/blocs/language_bloc/language_bloc.dart';
 import 'package:movies/presentation/journeys/drawer/navigation_expanded_list_item.dart';
 import 'package:movies/presentation/journeys/drawer/navigation_list_item.dart';
+import 'package:movies/presentation/widgets/app_dialog.dart';
 import 'package:movies/presentation/widgets/logo.dart';
+import 'package:wiredash/wiredash.dart';
 
 import '../../../common/constants/translation_constants.dart';
 
@@ -53,14 +55,35 @@ class NavigationDrawer extends StatelessWidget {
           ),
           NavigationListItem(
             title: TranslationConstants.feedback.t(context),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+              Wiredash.of(context)?.show();
+            },
           ),
           NavigationListItem(
             title: TranslationConstants.about.t(context),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+              _showAboutDialog(context);
+            },
           ),
         ],
       )),
+    );
+  }
+
+  void _showAboutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AppDialog(
+        title: TranslationConstants.about,
+        description: TranslationConstants.aboutDescription,
+        buttonText: TranslationConstants.okay,
+        child: Image.asset(
+          'assets/images/tmdb_logo.png',
+          height: Sizes.dimen_32.h,
+        ),
+      ),
     );
   }
 }

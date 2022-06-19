@@ -1,9 +1,11 @@
 {
-    "favoriteMovies": "Filmes Favoritos",
-    "language": "Idioma",
-    "about": "Sobre",
-    "feedback": "Feedback",
-    "popular": "POPULAR",
-    "now": "AGORA",
-    "soon": "EM BREVE"
-  }
+  "about": "Sobre",
+  "aboutDescription": "Este produto usa a API do TMDb, mas não é endossado ou certificado pelo TMDb. Este aplicativo foi desenvolvido para fins educacionais.",
+  "favoriteMovies": "Filmes Favoritos",
+  "feedback": "Feedback",
+  "language": "Idioma",
+  "now": "AGORA",
+  "okay": "Ok",
+  "popular": "POPULAR",
+  "soon": "EM BREVE"
+}
