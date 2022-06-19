@@ -6,4 +6,4 @@ This app is based on the series presented by [TechieBlossom](https://github.com/
 
 Hope this help other developers to accept the challenge of improving coding skills one step at a time.
 
-<center><img src="screenshot.png" width="400"/></center>
+<center><img src="screenshot.png" width="500"/></center>
