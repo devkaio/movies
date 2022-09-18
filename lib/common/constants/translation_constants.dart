@@ -13,4 +13,5 @@ class TranslationConstants {
   static const String retry = 'retry';
   static const String somethingWentWrong = 'somethingWentWrong';
   static const String checkNetwork = 'checkNetwork';
+  static const String noMovies = 'noMovies';
 }
