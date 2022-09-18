@@ -1,11 +1,14 @@
 {
   "about": "Sobre",
   "aboutDescription": "Este produto usa a API do TMDb, mas não é endossado ou certificado pelo TMDb. Este aplicativo foi desenvolvido para fins educacionais.",
+  "checkNetwork": "Verifique su conexión de red y presione el botón Reintentar o colóquelo como error presionando el botón Comentarios.",
   "favoriteMovies": "Filmes Favoritos",
   "feedback": "Feedback",
   "language": "Idioma",
   "now": "AGORA",
   "okay": "Ok",
   "popular": "POPULAR",
+  "retry": "Rever",
+  "somethingWentWrong": "Algo salió mal...",
   "soon": "EM BREVE"
 }

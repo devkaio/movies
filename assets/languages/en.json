@@ -1,11 +1,14 @@
 {
   "about": "About",
   "aboutDescription": "This product uses the TMDb API but is not endorsed or certified by TMDb. This app is developed for education purpose.",
+  "checkNetwork": "Please check your network connection and press Retry button or put in as a bug by presseing Feedback button.",
   "favoriteMovies": "Favorite Movies",
   "feedback": "Feedback",
   "language": "Language",
   "now": "NOW",
   "okay": "Okay",
   "popular": "POPULAR",
+  "retry": "Retry",
+  "somethingWentWrong": "Something went wrong...",
   "soon": "SOON"
 }
