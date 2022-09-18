@@ -8,7 +8,7 @@ import 'package:movies/presentation/journeys/home/movie_tabbed/movie_tabbed_widg
 import '../../../common/screenutil/screenutil.dart';
 import '../../blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
 import '../drawer/navigation_drawer.dart';
-import 'movie_carousel/carousel_load_error_widget.dart';
+import 'movie_carousel/app_error_widget.dart';
 import 'movie_carousel/movie_carousel_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -81,7 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               );
             } else if (state is MovieCarouselError) {
-              return CarouselLoadErrorWidget(
+              return AppErrorWidget(
+                onPressed: () =>
+                    movieCarouselBloc.add(const CarouselLoadEvent()),
                 bloc: movieCarouselBloc,
                 errorType: state.errorType,
               );
