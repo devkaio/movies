@@ -84,7 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
               return AppErrorWidget(
                 onPressed: () =>
                     movieCarouselBloc.add(const CarouselLoadEvent()),
-                bloc: movieCarouselBloc,
                 errorType: state.errorType,
               );
             }
