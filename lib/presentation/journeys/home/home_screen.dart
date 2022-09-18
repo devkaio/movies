@@ -8,6 +8,7 @@ import 'package:movies/presentation/journeys/home/movie_tabbed/movie_tabbed_widg
 import '../../../common/screenutil/screenutil.dart';
 import '../../blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
 import '../drawer/navigation_drawer.dart';
+import 'movie_carousel/carousel_load_error_widget.dart';
 import 'movie_carousel/movie_carousel_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -78,6 +79,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: MovieTabbedWidget(),
                   )
                 ],
+              );
+            } else if (state is MovieCarouselError) {
+              return CarouselLoadErrorWidget(
+                bloc: movieCarouselBloc,
+                errorType: state.errorType,
               );
             }
             return const SizedBox.shrink();
