@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'movie_carousel_bloc.dart';
 
 abstract class MovieCarouselState extends Equatable {
@@ -9,7 +10,13 @@ abstract class MovieCarouselState extends Equatable {
 
 class MovieCarouselInitial extends MovieCarouselState {}
 
-class MovieCarouselError extends MovieCarouselState {}
+class MovieCarouselError extends MovieCarouselState {
+  final AppErrorType errorType;
+
+  const MovieCarouselError(
+    this.errorType,
+  );
+}
 
 class MovieCarouselLoaded extends MovieCarouselState {
   final List<MovieEntity> movies;
