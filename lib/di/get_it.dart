@@ -13,6 +13,7 @@ import '../domain/usecases/get_trending.dart';
 import '../presentation/blocs/language_bloc/language_bloc.dart';
 import '../presentation/blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
 import '../presentation/blocs/movie_bloc/movie_carousel_bloc.dart';
+import '../presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import '../presentation/blocs/movie_tabbed_bloc/movie_tabbed_bloc.dart';
 
 final getItInstance = GetIt.I;
@@ -56,4 +57,6 @@ Future<void> init() async {
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
+
+  getItInstance.registerFactory(() => MovieDetailBloc(getItInstance()));
 }
