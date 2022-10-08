@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/common/extensions/size_extensions.dart';
 
 import '../../../../common/constants/size_constants.dart';
+import '../../../../common/extensions/size_extensions.dart';
 import '../../../../data/core/api_constants.dart';
+import '../../movie_detail/movie_detail_arguments.dart';
+import '../../movie_detail/movie_detail_screen.dart';
 
 class MovieCardWidget extends StatelessWidget {
   final int movieId;
@@ -21,7 +23,17 @@ class MovieCardWidget extends StatelessWidget {
       color: Colors.transparent,
       elevation: 32,
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => MovieDetailScreen(
+                movieDetailArguments: MovieDetailArguments(
+                  movieId,
+                ),
+              ),
+            ),
+          );
+        },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(Sizes.dimen_16.w),
           child: CachedNetworkImage(
