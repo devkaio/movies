@@ -1,18 +1,19 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
-import 'package:movies/data/core/api_client.dart';
-import 'package:movies/data/data_sources/movie_remote_data_source.dart';
-import 'package:movies/data/repositories/movie_repository_impl.dart';
-import 'package:movies/domain/repositories/movie_repository.dart';
-import 'package:movies/domain/usecases/get_coming_soon.dart';
-import 'package:movies/domain/usecases/get_playing_now.dart';
-import 'package:movies/domain/usecases/get_popular.dart';
-import 'package:movies/domain/usecases/get_trending.dart';
-import 'package:movies/presentation/blocs/language_bloc/language_bloc.dart';
-import 'package:movies/presentation/blocs/movie_bloc/movie_carousel_bloc.dart';
-import 'package:movies/presentation/blocs/movie_tabbed_bloc/movie_tabbed_bloc.dart';
 
+import '../data/core/api_client.dart';
+import '../data/data_sources/movie_remote_data_source.dart';
+import '../data/repositories/movie_repository_impl.dart';
+import '../domain/repositories/movie_repository.dart';
+import '../domain/usecases/get_coming_soon.dart';
+import '../domain/usecases/get_movie_detail.dart';
+import '../domain/usecases/get_playing_now.dart';
+import '../domain/usecases/get_popular.dart';
+import '../domain/usecases/get_trending.dart';
+import '../presentation/blocs/language_bloc/language_bloc.dart';
 import '../presentation/blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
+import '../presentation/blocs/movie_bloc/movie_carousel_bloc.dart';
+import '../presentation/blocs/movie_tabbed_bloc/movie_tabbed_bloc.dart';
 
 final getItInstance = GetIt.I;
 
@@ -46,10 +47,13 @@ Future<void> init() async {
   getItInstance.registerFactory(() => MovieBackdropBloc());
 
   getItInstance.registerFactory(() => MovieTabbedBloc(
-        getPopular: GetPopular(getItInstance()),
-        getPlayingNow: GetPlayingNow(getItInstance()),
-        getComingSoon: GetComingSoon(getItInstance()),
+        getPopular: getItInstance(),
+        getPlayingNow: getItInstance(),
+        getComingSoon: getItInstance(),
       ));
 
   getItInstance.registerSingleton<LanguageBloc>(LanguageBloc());
+
+  getItInstance.registerLazySingleton<GetMovieDetail>(
+      () => GetMovieDetail(getItInstance()));
 }
