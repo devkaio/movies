@@ -16,8 +16,8 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       final movieDetailEither =
           await getMovieDetail(MovieParams(event.movieId));
       movieDetailEither.fold(
-        (l) => MovieDetailError(),
-        (r) => MovieDetailLoaded(r),
+        (l) => emit(MovieDetailError()),
+        (r) => emit(MovieDetailLoaded(r)),
       );
     });
   }
