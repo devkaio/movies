@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:convert';
+
 import '../../domain/entities/movie_detail_entity.dart';
 
 class MovieDetailModel extends MovieDetailEntity {
@@ -49,7 +51,7 @@ class MovieDetailModel extends MovieDetailEntity {
       required super.voteAverage,
       this.voteCount});
 
-  factory MovieDetailModel.fromJson(Map<String, dynamic> json) {
+  factory MovieDetailModel.fromMap(Map<String, dynamic> json) {
     return MovieDetailModel(
       adult: json['adult'],
       backdropPath: json['backdrop_path'],
@@ -78,7 +80,7 @@ class MovieDetailModel extends MovieDetailEntity {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['adult'] = adult;
     data['backdrop_path'] = backdropPath;
@@ -120,15 +122,22 @@ class MovieDetailModel extends MovieDetailEntity {
     data['vote_count'] = voteCount;
     return data;
   }
+
+  String toJson() => json.encode(toMap());
+
+  factory MovieDetailModel.fromJson(String source) =>
+      MovieDetailModel.fromMap(json.decode(source));
 }
 
-_genres(Map<String, dynamic> json) {
+List<Genres?>? _genres(Map<String, dynamic> json) {
   if (json['genres'] != null) {
-    final genres = List<Genres>.empty(growable: true);
-    (json['genres'] as Map<String, dynamic>).forEach((k, v) {
+    final genres = List.empty(growable: true);
+    for (var v in (json['genres'] as List)) {
       genres.add(Genres.fromJson(v));
-    });
+    }
+    return genres.cast();
   }
+  return [];
 }
 
 class BelongsToCollection {
