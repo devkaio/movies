@@ -16,7 +16,7 @@ class ApiClient {
       },
     );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode.toString().startsWith('2')) {
       return response.body;
     } else {
       throw Exception(response.reasonPhrase);
